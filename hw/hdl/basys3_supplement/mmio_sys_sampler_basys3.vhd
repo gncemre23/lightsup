@@ -142,18 +142,19 @@ begin
          -- external signal
          din     => sw
       );
-   -- slot 4: reserved for user defined              
-   -- user_slot4 : entity work.
-   -- port map(
-   --    clk      => clk,
-   --    reset    => reset,
-   --    cs       => cs_array(S4_USER),
-   --    read     => mem_rd_array(S4_USER),
-   --    write    => mem_wr_array(S4_USER),
-   --    addr     => reg_addr_array(S4_USER),
-   --    rd_data  => rd_data_array(S4_USER),
-   --    wr_data  => wr_data_array(S4_USER)
-   -- );
+   -- slot 4: reserved for user defined    
+   user_slot4: entity work.chu_lfsr
+   port map(
+         clk     => clk,
+         reset   => reset,
+         cs      => cs_array(S4_USER),
+         read    => mem_rd_array(S4_USER),
+         write   => mem_wr_array(S4_USER),
+         addr    => reg_addr_array(S4_USER),
+         rd_data => rd_data_array(S4_USER),
+         wr_data => wr_data_array(S4_USER)
+      );
+   
    rd_data_array(4) <= (others => '0');
    -- slot 5: xadc           
    xadc_slot5 : entity work.chu_xadc_basys3_core
@@ -301,19 +302,9 @@ begin
          -- external interface
          adsr_env => adsr_env
       );
-   lfsr_slot14: entity work.chu_lfsr
-   port map(
-         clk     => clk,
-         reset   => reset,
-         cs      => cs_array(S14_USER1),
-         read    => mem_rd_array(S14_USER1),
-         write   => mem_wr_array(S14_USER1),
-         addr    => reg_addr_array(S14_USER1),
-         rd_data => rd_data_array(S14_USER1),
-         wr_data => wr_data_array(S14_USER1)
-      );
+   
    -- assign 0's to all unused slot rd_data signals 
-   gen_unused_slot : for i in 15 to 63 generate
+   gen_unused_slot : for i in 14 to 63 generate
       rd_data_array(i) <= (others => '0');
    end generate gen_unused_slot;
 end arch;
