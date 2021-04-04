@@ -15,7 +15,7 @@ SsegCore::SsegCore(uint32_t core_base_addr) {
    const uint8_t HI_PTN[]={0xff,0xf9,0x89,0xff,0xff,0xff,0xff,0xff};
    base_addr = core_base_addr;
    write_8ptn((uint8_t*) HI_PTN);
-   set_dp(0x02);
+   set_dp(0x00);
 }
 
 SsegCore::~SsegCore() {

@@ -1,7 +1,7 @@
 /*****************************************************************/ /**
  * @file main_lightssup.cpp
  *
- * @brief Basic test of nexys4 ddr mmio cores
+ * @brief Implementation of lightsup 3x3 puzzle
  *
  * @author Ali Alsayed
  * @version v1.0: initial release
@@ -39,26 +39,27 @@
 #define BTND 4
 #define BTNC 16
 
-void update_sev_seg(SsegCore *sseg, uint32_t *lights)
+
+
+
+void update_sev_seg(SsegCore *sseg, uint8_t *lights)
 {
     uint8_t led1_pattern = 0xff;
     uint8_t led2_pattern = 0xff;
     uint8_t led3_pattern = 0xff;
 
-    led1_pattern &= ~((uint8_t)lights[0] + (uint8_t)lights[1] << 6 + (uint8_t)lights[2] << 3);
-    led2_pattern &= ~((uint8_t)lights[3] + (uint8_t)lights[4] << 6 + (uint8_t)lights[5] << 3);
-    led3_pattern &= ~((uint8_t)lights[6] + (uint8_t)lights[7] << 6 + (uint8_t)lights[8] << 3);
 
-    sseg->write_1ptn(led1_pattern,0);
-    sleep_ms(10);
-    sseg->write_1ptn(led2_pattern, 1);
-    sleep_ms(10);
-    sseg->write_1ptn(led3_pattern, 2);
-    sleep_ms(10);
+    led1_pattern &= ~(lights[0] + (lights[1] << 6) + (lights[2] << 3));
+    led2_pattern &= ~(lights[3] + (lights[4] << 6) + (lights[5] << 3));
+    led3_pattern &= ~(lights[6] + (lights[7] << 6) + (lights[8] << 3));
+
+    sseg->write_1ptn(led1_pattern,3);
+    sseg->write_1ptn(led2_pattern, 2);
+    sseg->write_1ptn(led3_pattern, 1);
 }
 
 /* If all the lights are off return 1 */
-uint32_t is_all_lights_off(uint32_t *lights, int size)
+uint32_t is_all_lights_off(uint8_t *lights, int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -68,7 +69,7 @@ uint32_t is_all_lights_off(uint32_t *lights, int size)
     return 1;
 }
 
-void toggle(uint32_t *light)
+void toggle(uint8_t *light)
 {
     if (*light == 1)
         *light = 0;
@@ -101,7 +102,7 @@ uint32_t switch_movement(uint32_t prev, uint32_t current)
         ret = 0;
     return ret;
 }
-void turn_off_all_ligths(uint32_t *lights, int size)
+void turn_off_all_ligths(uint8_t *lights, int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -111,7 +112,7 @@ void turn_off_all_ligths(uint32_t *lights, int size)
 
 /*Initializing the light array with current random number 
 obtained from LFSR*/
-void get_rand(uint32_t *lights, LfsrCore *lfsr, int size)
+void get_rand(uint8_t *lights, LfsrCore *lfsr, int size)
 {
     uint32_t mask;
     uint32_t masked_lfsr_out;
@@ -120,7 +121,7 @@ void get_rand(uint32_t *lights, LfsrCore *lfsr, int size)
     {
         mask = 1 << i;
         masked_lfsr_out = lfsr_out & mask;
-        lights[i] = lfsr_out >> i;
+        lights[i] = masked_lfsr_out >> i;
     }
 }
 
@@ -131,14 +132,14 @@ uint32_t get_button_status(DebounceCore *btn)
 
 uint32_t get_switch_status(GpiCore *sw)
 {
-    sw->read();
+    return sw->read();
 }
 
 int main()
 {
     uint32_t state = WAIT_FOR_START;
     uint32_t pattern = ONE;
-    uint32_t lights[9] = {0};
+    uint8_t lights[9] = {0};
     unsigned long time_rec;
     uint32_t switch_current, switch_prev;
     init_fix();
@@ -150,6 +151,29 @@ int main()
 
     while (1)
     {
+    	/* For test purposes */
+//    	if(state == WAIT_FOR_START)
+//    	{
+//    		for(int i=0;i<9;i++)
+//    			lights[i] = 0;
+//    		lights[1]=1;
+//    		lights[3]=1;
+//    	}
+//    	else if(state == GAME)
+//    	{
+//    		for(int i=0;i<9;i++)
+//    			lights[i] = 0;
+//    		lights[0]=1;
+//    		lights[2]=1;
+//    	}
+//    	else if(state == DISPLAY_WINNING_PATTERN)
+//    	{
+//    		for(int i=0;i<9;i++)
+//    			lights[i] = 0;
+//    		lights[5]=1;
+//    		lights[7]=1;
+//    	}
+
 
         update_sev_seg(&sseg,lights);
 
