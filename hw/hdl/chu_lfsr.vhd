@@ -34,7 +34,7 @@ begin
             init  => init
         );
     ---- decoding logic
-    wr_en <= '1' when write='1' and cs='1' and addr(1 downto 0)="10" else '0';
+    wr_en <= '1' when write='1' and cs='1' and addr(1 downto 0)="01" else '0';
     init <= '1' when wr_en='1' and wr_data(0)='1' else '0';
     -- slot read interface
     rd_data(8 downto 0) <= lfsr_out;

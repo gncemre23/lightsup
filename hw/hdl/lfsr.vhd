@@ -26,7 +26,7 @@ begin
    lfsr_out <= shift_reg;
 
    --shift register implementation
-   process (clk, reset)
+   process (clk, reset, init)
    begin
       if reset = '1' or init = '1' then
          shift_reg <= "010101010";

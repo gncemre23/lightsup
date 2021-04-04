@@ -155,7 +155,6 @@ begin
          wr_data => wr_data_array(S4_USER)
       );
    
-   rd_data_array(4) <= (others => '0');
    -- slot 5: xadc           
    xadc_slot5 : entity work.chu_xadc_basys3_core
       port map(

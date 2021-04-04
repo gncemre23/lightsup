@@ -60,7 +60,7 @@ begin
          duty_2d_reg <= (others => (others => '0'));
       elsif (clk'event and clk = '1') then
          if duty_array_en = '1' then
-           duty_2d_reg(to_integer(unsigned(addr(3 downto 0))))<=wr_data;  
+           duty_2d_reg(to_integer(unsigned(addr(3 downto 0))))<=wr_data(10 downto 0);  
          end if;
       end if;
    end process;

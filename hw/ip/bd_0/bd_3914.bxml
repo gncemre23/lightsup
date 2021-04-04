@@ -4,8 +4,8 @@
     <Description>Composite Fileset</Description>
     <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1617433646"/>
     <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1617433646"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1617433641"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1617433646"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1617472628"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1617472628"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/ip_0/bd_3914_microblaze_I_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_I"/>
@@ -124,6 +124,11 @@
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim/bd_3914.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>
   </CompositeFile>

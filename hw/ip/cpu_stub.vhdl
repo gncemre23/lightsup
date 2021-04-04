@@ -1,9 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Sat Apr  3 10:09:41 2021
+-- Date        : Sat Apr  3 10:09:38 2021
 -- Host        : egoncu-Lenovo-IdeaPad-L340-15API running 64-bit Ubuntu 20.04.1 LTS
--- Command     : write_vhdl -force -mode synth_stub /home/egoncu/Desktop/github/lightsup/hw/ip/cpu_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top cpu -prefix
+--               cpu_ cpu_stub.vhdl
 -- Design      : cpu
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1

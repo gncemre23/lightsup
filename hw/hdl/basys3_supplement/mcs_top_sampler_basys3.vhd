@@ -18,6 +18,7 @@ entity mcs_top_sampler_basys3 is
    generic(BRIDGE_BASE : std_logic_vector(31 downto 0) := x"C0000000");
    port(
       clk         : in    std_logic;
+      --reset       : in    std_logic;
       -- reset_n     : in    std_logic;
       -- switches and LEDs
       sw          : in    std_logic_vector(15 downto 0);

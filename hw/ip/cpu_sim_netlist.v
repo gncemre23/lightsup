@@ -1,9 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Sat Apr  3 10:09:41 2021
+// Date        : Sat Apr  3 10:09:38 2021
 // Host        : egoncu-Lenovo-IdeaPad-L340-15API running 64-bit Ubuntu 20.04.1 LTS
-// Command     : write_verilog -force -mode funcsim /home/egoncu/Desktop/github/lightsup/hw/ip/cpu_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top cpu -prefix
+//               cpu_ cpu_sim_netlist.v
 // Design      : cpu
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -11,56 +12,6 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "cpu,bd_3914,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "bd_3914,Vivado 2020.1" *) 
-(* NotValidForBitStream *)
-module cpu
-   (Clk,
-    Reset,
-    IO_addr_strobe,
-    IO_address,
-    IO_byte_enable,
-    IO_read_data,
-    IO_read_strobe,
-    IO_ready,
-    IO_write_data,
-    IO_write_strobe);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.Clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.Clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN bd_3914_Clk, INSERT_VIP 0, ASSOCIATED_ASYNC_RESET Reset, BOARD.ASSOCIATED_PARAM CLK_BOARD_INTERFACE" *) input Clk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE" *) input Reset;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO ADDR_STROBE" *) output IO_addr_strobe;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO ADDRESS" *) output [31:0]IO_address;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO BYTE_ENABLE" *) output [3:0]IO_byte_enable;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO READ_DATA" *) input [31:0]IO_read_data;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO READ_STROBE" *) output IO_read_strobe;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO READY" *) input IO_ready;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO WRITE_DATA" *) output [31:0]IO_write_data;
-  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO WRITE_STROBE" *) output IO_write_strobe;
-
-  wire Clk;
-  wire IO_addr_strobe;
-  wire [31:0]IO_address;
-  wire [3:0]IO_byte_enable;
-  wire [31:0]IO_read_data;
-  wire IO_read_strobe;
-  wire IO_ready;
-  wire [31:0]IO_write_data;
-  wire IO_write_strobe;
-  wire Reset;
-
-  (* hw_handoff = "cpu.hwdef" *) 
-  cpu_bd_3914 U0
-       (.Clk(Clk),
-        .IO_addr_strobe(IO_addr_strobe),
-        .IO_address(IO_address),
-        .IO_byte_enable(IO_byte_enable),
-        .IO_read_data(IO_read_data),
-        .IO_read_strobe(IO_read_strobe),
-        .IO_ready(IO_ready),
-        .IO_write_data(IO_write_data),
-        .IO_write_strobe(IO_write_strobe),
-        .Reset(Reset));
-endmodule
-
-(* ORIG_REF_NAME = "JTAG_CONTROL" *) 
 module cpu_JTAG_CONTROL
    (Q,
     AR,
@@ -1250,7 +1201,6 @@ module cpu_JTAG_CONTROL
         .Q(\tdi_shifter_reg_n_0_[7] ));
 endmodule
 
-(* ORIG_REF_NAME = "MB_BSCANE2" *) 
 module cpu_MB_BSCANE2
    (\Use_BSCAN.PORT_Selector_reg[0] ,
     DRCK,
@@ -1410,7 +1360,6 @@ module cpu_MB_BSCANE2
         .O(\shift_Count_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "MB_BUFG" *) 
 module cpu_MB_BUFG
    (Ext_JTAG_DRCK,
     DRCK);
@@ -1426,7 +1375,6 @@ module cpu_MB_BUFG
         .O(Ext_JTAG_DRCK));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDC_1" *) 
 module cpu_MB_FDC_1
    (D_1,
     Dbg_Reg_En_0,
@@ -2020,7 +1968,6 @@ module cpu_MB_FDC_1
         .O(\tdi_shifter_reg[0]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDRE_1" *) 
 module cpu_MB_FDRE_1
    (sync,
     Dbg_Shift_0,
@@ -2087,7 +2034,7 @@ endmodule
 (* C_TRACE_ASYNC_RESET = "0" *) (* C_TRACE_CLK_FREQ_HZ = "200000000" *) (* C_TRACE_CLK_OUT_PHASE = "90" *) 
 (* C_TRACE_DATA_WIDTH = "32" *) (* C_TRACE_ID = "110" *) (* C_TRACE_OUTPUT = "0" *) 
 (* C_TRACE_PROTOCOL = "1" *) (* C_USE_BSCAN = "0" *) (* C_USE_CONFIG_RESET = "0" *) 
-(* C_USE_CROSS_TRIGGER = "0" *) (* C_USE_UART = "0" *) (* ORIG_REF_NAME = "MDM" *) 
+(* C_USE_CROSS_TRIGGER = "0" *) (* C_USE_UART = "0" *) 
 module cpu_MDM
    (Config_Reset,
     Scan_Reset_Sel,
@@ -10854,7 +10801,6 @@ module cpu_MDM
        (.P(\<const1> ));
 endmodule
 
-(* ORIG_REF_NAME = "MDM_Core" *) 
 module cpu_MDM_Core
    (Q,
     Dbg_Disable_0,
@@ -11403,7 +11349,7 @@ module cpu_MDM_Core
         .O(\Use_E2.BSCANE2_I_i_2_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "bd_3914" *) (* hw_handoff = "cpu.hwdef" *) 
+(* hw_handoff = "cpu.hwdef" *) 
 module cpu_bd_3914
    (Clk,
     IO_addr_strobe,
@@ -11833,8 +11779,7 @@ module cpu_bd_3914
         .dout(Wakeup));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_dlmb_0,lmb_v10,{}" *) (* ORIG_REF_NAME = "bd_3914_dlmb_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_v10,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_dlmb_0,lmb_v10,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_v10,Vivado 2020.1" *) 
 module cpu_bd_3914_dlmb_0
    (LMB_Clk,
     SYS_Rst,
@@ -11946,8 +11891,7 @@ module cpu_bd_3914_dlmb_0
         .Sl_Wait(Sl_Wait));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_dlmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* ORIG_REF_NAME = "bd_3914_dlmb_cntlr_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_bram_if_cntlr,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_dlmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2020.1" *) 
 module cpu_bd_3914_dlmb_cntlr_0
    (LMB_Clk,
     LMB_Rst,
@@ -12024,8 +11968,7 @@ module cpu_bd_3914_dlmb_cntlr_0
         .Sl_Ready(Sl_Ready));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_ilmb_0,lmb_v10,{}" *) (* ORIG_REF_NAME = "bd_3914_ilmb_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_v10,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_ilmb_0,lmb_v10,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_v10,Vivado 2020.1" *) 
 module cpu_bd_3914_ilmb_0
    (LMB_Clk,
     SYS_Rst,
@@ -12110,8 +12053,7 @@ module cpu_bd_3914_ilmb_0
         .SYS_Rst(SYS_Rst));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_ilmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* ORIG_REF_NAME = "bd_3914_ilmb_cntlr_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "lmb_bram_if_cntlr,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_ilmb_cntlr_0,lmb_bram_if_cntlr,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "lmb_bram_if_cntlr,Vivado 2020.1" *) 
 module cpu_bd_3914_ilmb_cntlr_0
    (LMB_Clk,
     LMB_Rst,
@@ -12188,8 +12130,7 @@ module cpu_bd_3914_ilmb_cntlr_0
         .Sl_Ready(Sl_Ready));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_iomodule_0_0,iomodule,{}" *) (* ORIG_REF_NAME = "bd_3914_iomodule_0_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "iomodule,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_iomodule_0_0,iomodule,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "iomodule,Vivado 2020.1" *) 
 module cpu_bd_3914_iomodule_0_0
    (Clk,
     Rst,
@@ -12453,8 +12394,7 @@ module cpu_bd_3914_iomodule_0_0
         .UART_Tx(NLW_U0_UART_Tx_UNCONNECTED));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}" *) (* ORIG_REF_NAME = "bd_3914_lmb_bram_I_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "blk_mem_gen_v8_4_4,Vivado 2020.1" *) 
 module cpu_bd_3914_lmb_bram_I_0
    (clka,
     rsta,
@@ -12666,8 +12606,7 @@ module cpu_bd_3914_lmb_bram_I_0
         .web(web));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_mdm_0_0,MDM,{}" *) (* ORIG_REF_NAME = "bd_3914_mdm_0_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "MDM,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_mdm_0_0,MDM,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "MDM,Vivado 2020.1" *) 
 module cpu_bd_3914_mdm_0_0
    (Debug_SYS_Rst,
     Dbg_Clk_0,
@@ -15138,8 +15077,7 @@ module cpu_bd_3914_mdm_0_0
         .bscan_ext_update(1'b0));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_microblaze_I_0,MicroBlaze,{}" *) (* ORIG_REF_NAME = "bd_3914_microblaze_I_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "MicroBlaze,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_microblaze_I_0,MicroBlaze,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "MicroBlaze,Vivado 2020.1" *) 
 module cpu_bd_3914_microblaze_I_0
    (Clk,
     Reset,
@@ -16147,8 +16085,7 @@ module cpu_bd_3914_microblaze_I_0
         .Write_Strobe(Write_Strobe));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_rst_0_0,proc_sys_reset,{}" *) (* ORIG_REF_NAME = "bd_3914_rst_0_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "proc_sys_reset,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_rst_0_0,proc_sys_reset,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "proc_sys_reset,Vivado 2020.1" *) 
 module cpu_bd_3914_rst_0_0
    (slowest_sync_clk,
     ext_reset_in,
@@ -16204,8 +16141,7 @@ module cpu_bd_3914_rst_0_0
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
-(* CHECK_LICENSE_TYPE = "bd_3914_xlconcat_0_0,xlconcat_v2_1_3_xlconcat,{}" *) (* ORIG_REF_NAME = "bd_3914_xlconcat_0_0" *) (* downgradeipidentifiedwarnings = "yes" *) 
-(* x_core_info = "xlconcat_v2_1_3_xlconcat,Vivado 2020.1" *) 
+(* CHECK_LICENSE_TYPE = "bd_3914_xlconcat_0_0,xlconcat_v2_1_3_xlconcat,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "xlconcat_v2_1_3_xlconcat,Vivado 2020.1" *) 
 module cpu_bd_3914_xlconcat_0_0
    (In0,
     In1,
@@ -16221,7 +16157,6 @@ module cpu_bd_3914_xlconcat_0_0
   assign dout[0] = In0;
 endmodule
 
-(* ORIG_REF_NAME = "cdc_sync" *) 
 module cpu_cdc_sync
    (lpf_exr_reg,
     scndry_out,
@@ -16409,6 +16344,55 @@ module cpu_cdc_sync_0
         .O(lpf_asr_reg));
 endmodule
 
+(* CHECK_LICENSE_TYPE = "cpu,bd_3914,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "bd_3914,Vivado 2020.1" *) 
+(* NotValidForBitStream *)
+module cpu
+   (Clk,
+    Reset,
+    IO_addr_strobe,
+    IO_address,
+    IO_byte_enable,
+    IO_read_data,
+    IO_read_strobe,
+    IO_ready,
+    IO_write_data,
+    IO_write_strobe);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK.Clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK.Clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN bd_3914_Clk, INSERT_VIP 0, ASSOCIATED_ASYNC_RESET Reset, BOARD.ASSOCIATED_PARAM CLK_BOARD_INTERFACE" *) input Clk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 RST.Reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME RST.Reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE" *) input Reset;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO ADDR_STROBE" *) output IO_addr_strobe;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO ADDRESS" *) output [31:0]IO_address;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO BYTE_ENABLE" *) output [3:0]IO_byte_enable;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO READ_DATA" *) input [31:0]IO_read_data;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO READ_STROBE" *) output IO_read_strobe;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO READY" *) input IO_ready;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO WRITE_DATA" *) output [31:0]IO_write_data;
+  (* x_interface_info = "xilinx.com:interface:mcsio_bus:1.0 IO WRITE_STROBE" *) output IO_write_strobe;
+
+  wire Clk;
+  wire IO_addr_strobe;
+  wire [31:0]IO_address;
+  wire [3:0]IO_byte_enable;
+  wire [31:0]IO_read_data;
+  wire IO_read_strobe;
+  wire IO_ready;
+  wire [31:0]IO_write_data;
+  wire IO_write_strobe;
+  wire Reset;
+
+  (* hw_handoff = "cpu.hwdef" *) 
+  cpu_bd_3914 U0
+       (.Clk(Clk),
+        .IO_addr_strobe(IO_addr_strobe),
+        .IO_address(IO_address),
+        .IO_byte_enable(IO_byte_enable),
+        .IO_read_data(IO_read_data),
+        .IO_read_strobe(IO_read_strobe),
+        .IO_ready(IO_ready),
+        .IO_write_data(IO_write_data),
+        .IO_write_strobe(IO_write_strobe),
+        .Reset(Reset));
+endmodule
+
 (* C_AVOID_PRIMITIVES = "0" *) (* C_BASEADDR = "64'b0000000000000000000000000000000010000000000000000000000000000000" *) (* C_FAMILY = "artix7" *) 
 (* C_FIT1_INTERRUPT = "0" *) (* C_FIT1_No_CLOCKS = "6216" *) (* C_FIT2_INTERRUPT = "0" *) 
 (* C_FIT2_No_CLOCKS = "6216" *) (* C_FIT3_INTERRUPT = "0" *) (* C_FIT3_No_CLOCKS = "6216" *) 
@@ -16440,7 +16424,7 @@ endmodule
 (* C_USE_GPO2 = "0" *) (* C_USE_GPO3 = "0" *) (* C_USE_GPO4 = "0" *) 
 (* C_USE_IO_BUS = "1" *) (* C_USE_PIT1 = "0" *) (* C_USE_PIT2 = "0" *) 
 (* C_USE_PIT3 = "0" *) (* C_USE_PIT4 = "0" *) (* C_USE_TMR_DISABLE = "0" *) 
-(* C_USE_UART_RX = "0" *) (* C_USE_UART_TX = "0" *) (* ORIG_REF_NAME = "iomodule" *) 
+(* C_USE_UART_RX = "0" *) (* C_USE_UART_TX = "0" *) 
 module cpu_iomodule
    (Clk,
     Rst,
@@ -18902,7 +18886,6 @@ module cpu_iomodule
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "lmb_bram_if_cntlr" *) 
 module cpu_lmb_bram_if_cntlr
    (BRAM_WEN_A,
     Sl_Ready,
@@ -19076,7 +19059,7 @@ module cpu_lmb_bram_if_cntlr__parameterized1
 endmodule
 
 (* C_EXT_RESET_HIGH = "1" *) (* C_LMB_AWIDTH = "32" *) (* C_LMB_DWIDTH = "32" *) 
-(* C_LMB_NUM_SLAVES = "2" *) (* C_LMB_PROTOCOL = "0" *) (* ORIG_REF_NAME = "lmb_v10" *) 
+(* C_LMB_NUM_SLAVES = "2" *) (* C_LMB_PROTOCOL = "0" *) 
 module cpu_lmb_v10
    (LMB_Clk,
     SYS_Rst,
@@ -19472,7 +19455,6 @@ module cpu_lmb_v10__parameterized1
         .S(SYS_Rst));
 endmodule
 
-(* ORIG_REF_NAME = "lpf" *) 
 module cpu_lpf
    (lpf_int,
     slowest_sync_clk,
@@ -19623,7 +19605,6 @@ module cpu_lpf
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "mdm_v3_2_18_MB_LUT1" *) 
 module cpu_mdm_v3_2_18_MB_LUT1
    (Ext_JTAG_TDI,
     I0);
@@ -19642,7 +19623,6 @@ module cpu_mdm_v3_2_18_MB_LUT1
         .O(lut1_o));
 endmodule
 
-(* ORIG_REF_NAME = "mdm_v3_2_18_MB_SRL16E" *) 
 module cpu_mdm_v3_2_18_MB_SRL16E
    (tdo,
     Q,
@@ -19850,7 +19830,6 @@ endmodule
 (* C_AUX_RESET_HIGH = "1'b0" *) (* C_AUX_RST_WIDTH = "4" *) (* C_EXT_RESET_HIGH = "1'b1" *) 
 (* C_EXT_RST_WIDTH = "4" *) (* C_FAMILY = "artix7" *) (* C_NUM_BUS_RST = "1" *) 
 (* C_NUM_INTERCONNECT_ARESETN = "1" *) (* C_NUM_PERP_ARESETN = "1" *) (* C_NUM_PERP_RST = "1" *) 
-(* ORIG_REF_NAME = "proc_sys_reset" *) 
 module cpu_proc_sys_reset
    (slowest_sync_clk,
     ext_reset_in,
@@ -19967,7 +19946,6 @@ module cpu_proc_sys_reset
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
-(* ORIG_REF_NAME = "sequence_psr" *) 
 module cpu_sequence_psr
    (MB_out,
     Bsr_out,
@@ -20208,7 +20186,6 @@ module cpu_sequence_psr
         .R(lpf_int));
 endmodule
 
-(* ORIG_REF_NAME = "upcnt_n" *) 
 module cpu_upcnt_n
    (Q,
     seq_clr,
@@ -20330,7 +20307,6 @@ module cpu_upcnt_n
         .R(clear));
 endmodule
 
-(* ORIG_REF_NAME = "ALU" *) 
 module cpu_ALU
    (LO,
     \Using_FPGA.Native ,
@@ -21056,7 +21032,6 @@ module cpu_ALU
         .\trace_data_address_i_reg[9] (\trace_data_address_i_reg[9] ));
 endmodule
 
-(* ORIG_REF_NAME = "ALU_Bit" *) 
 module cpu_ALU_Bit
    (EX_CarryOut,
     \Using_FPGA.Native ,
@@ -23031,7 +23006,6 @@ module cpu_ALU_Bit__parameterized2
         .\trace_data_address_i_reg[0] (\trace_data_address_i_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "Byte_Doublet_Handle" *) 
 module cpu_Byte_Doublet_Handle
    (D,
     O,
@@ -23132,7 +23106,6 @@ module cpu_Byte_Doublet_Handle
         .sel_Write_Mux_MSB(sel_Write_Mux_MSB));
 endmodule
 
-(* ORIG_REF_NAME = "Data_Flow" *) 
 module cpu_Data_Flow
    (ex_Result,
     Op1_Low,
@@ -23942,7 +23915,6 @@ module cpu_Data_Flow
         .reg_Test_Equal_N(reg_Test_Equal_N));
 endmodule
 
-(* ORIG_REF_NAME = "Debug" *) 
 module cpu_Debug
    (Sleep,
     dbg_brki_hit,
@@ -26926,7 +26898,6 @@ module cpu_Debug
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "Decode" *) 
 module cpu_Decode
    (IReady,
     Buffer_Addr,
@@ -28848,7 +28819,6 @@ module cpu_Decode
         .R(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FD" *) 
 module cpu_MB_FD
    (\Using_FPGA.Native_0 ,
     EX_Result,
@@ -28873,7 +28843,6 @@ module cpu_MB_FD
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDE" *) 
 module cpu_MB_FDE
    (PC_EX_i,
     \Using_FPGA.Native_0 ,
@@ -30189,7 +30158,6 @@ module cpu_MB_FDE_724
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MB_FDS" *) 
 module cpu_MB_FDS
    (\Using_FPGA.Native_0 ,
     DI,
@@ -31153,7 +31121,6 @@ module cpu_MB_FD_376
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT2" *) 
 module cpu_MB_LUT2
    (byte_i_reg,
     byte_selects_0,
@@ -31175,7 +31142,6 @@ module cpu_MB_LUT2
         .O(byte_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT4" *) 
 module cpu_MB_LUT4
    (write_Reg_I_S,
     DReady,
@@ -34845,7 +34811,6 @@ module cpu_MB_LUT4__parameterized9
         .O(correct_Carry_Select));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT5" *) 
 module cpu_MB_LUT5
    (of_PipeRun_Select,
     mul_Executing,
@@ -34913,7 +34878,6 @@ module cpu_MB_LUT5__parameterized1
         .O(of_PipeRun_without_dready));
 endmodule
 
-(* ORIG_REF_NAME = "MB_LUT6_2" *) 
 module cpu_MB_LUT6_2
    (op1_Reg,
     op1_I,
@@ -38087,7 +38051,6 @@ module cpu_MB_LUT6_2__parameterized8
         .O6(D[1]));
 endmodule
 
-(* ORIG_REF_NAME = "MB_RAM32X1D" *) 
 module cpu_MB_RAM32X1D
    (Reg1_Data,
     Data_Write,
@@ -41031,7 +40994,6 @@ module cpu_MB_RAM32X1D_471
         .WE(Reg_Write));
 endmodule
 
-(* ORIG_REF_NAME = "MB_SRLC16E" *) 
 module cpu_MB_SRLC16E
    (SRL16_Sel_7,
     which_pc__0,
@@ -41347,7 +41309,6 @@ module cpu_MB_SRLC16E_47
         .Q15(SRL16_MC15_1));
 endmodule
 
-(* ORIG_REF_NAME = "MSR_Reg" *) 
 module cpu_MSR_Reg
    (D,
     I3,
@@ -41423,7 +41384,6 @@ module cpu_MSR_Reg
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "MSR_Reg_Bit" *) 
 module cpu_MSR_Reg_Bit
    (D,
     I3_1,
@@ -41588,7 +41548,7 @@ endmodule
 (* C_USE_ICACHE = "0" *) (* C_USE_INTERRUPT = "0" *) (* C_USE_MMU = "0" *) 
 (* C_USE_MSR_INSTR = "0" *) (* C_USE_NON_SECURE = "0" *) (* C_USE_PCMP_INSTR = "0" *) 
 (* C_USE_REORDER_INSTR = "0" *) (* C_USE_STACK_PROTECTION = "0" *) (* G_TEMPLATE_LIST = "0" *) 
-(* ORIG_REF_NAME = "MicroBlaze" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module cpu_MicroBlaze
    (RAM_To,
     RAM_From,
@@ -53816,7 +53776,6 @@ module cpu_MicroBlaze
        (.P(\<const1> ));
 endmodule
 
-(* ORIG_REF_NAME = "MicroBlaze_Area" *) 
 module cpu_MicroBlaze_Area
    (D,
     \Using_FPGA.Native ,
@@ -55363,7 +55322,6 @@ module cpu_MicroBlaze_Area
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "MicroBlaze_Core" *) 
 module cpu_MicroBlaze_Core
    (D,
     \Using_FPGA.Native ,
@@ -55557,7 +55515,6 @@ module cpu_MicroBlaze_Core
         .O(reset_temp__0));
 endmodule
 
-(* ORIG_REF_NAME = "Operand_Select" *) 
 module cpu_Operand_Select
    (Op1_Logic,
     EX_Op2,
@@ -56455,7 +56412,6 @@ module cpu_Operand_Select
         .R(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "Operand_Select_Bit" *) 
 module cpu_Operand_Select_Bit
    (\Using_FPGA.Native ,
     \Using_FPGA.Native_0 ,
@@ -58656,7 +58612,6 @@ module cpu_Operand_Select_Bit__parameterized8_585
         .op2_C(op2_C));
 endmodule
 
-(* ORIG_REF_NAME = "PC_Bit" *) 
 module cpu_PC_Bit
    (\Using_FPGA.Native ,
     Address,
@@ -60190,7 +60145,6 @@ module cpu_PC_Bit_485
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "PC_Module" *) 
 module cpu_PC_Module
    (I3,
     Address,
@@ -60604,7 +60558,6 @@ module cpu_PC_Module
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "PreFetch_Buffer" *) 
 module cpu_PreFetch_Buffer
    (instr_OF_raw,
     \Using_FPGA.Native ,
@@ -61606,7 +61559,6 @@ module cpu_PreFetch_Buffer
         .trace_jump_taken_i_reg(trace_jump_taken_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "Register_File" *) 
 module cpu_Register_File
    (Reg1_Data,
     Clk_0,
@@ -61962,7 +61914,6 @@ module cpu_Register_File
         .reg1_Addr(reg1_Addr));
 endmodule
 
-(* ORIG_REF_NAME = "Register_File_Bit" *) 
 module cpu_Register_File_Bit
    (Reg1_Data,
     Data_Write,
@@ -63498,7 +63449,6 @@ module cpu_Register_File_Bit_408
         .imm_Value(imm_Value));
 endmodule
 
-(* ORIG_REF_NAME = "Result_Mux" *) 
 module cpu_Result_Mux
    (\Using_FPGA.Native ,
     \Using_FPGA.Native_0 ,
@@ -63940,7 +63890,6 @@ module cpu_Result_Mux
         .\Using_FPGA.Native_2 (\Using_FPGA.Native_18 ));
 endmodule
 
-(* ORIG_REF_NAME = "Result_Mux_Bit" *) 
 module cpu_Result_Mux_Bit
    (EX_Result,
     \Using_FPGA.Native ,
@@ -65428,7 +65377,6 @@ module cpu_Result_Mux_Bit_284
         .mul_ALU_Res(mul_ALU_Res));
 endmodule
 
-(* ORIG_REF_NAME = "Shift_Logic_Bit" *) 
 module cpu_Shift_Logic_Bit
    (Select_Logic_reg,
     op2_C,
@@ -66932,7 +66880,6 @@ module cpu_Shift_Logic_Bit_160
         .shift_Res(shift_Res));
 endmodule
 
-(* ORIG_REF_NAME = "Shift_Logic_Module" *) 
 module cpu_Shift_Logic_Module
    (Shift_Logic_Res,
     Select_Logic_reg,
@@ -67443,7 +67390,6 @@ module cpu_Shift_Logic_Module
         .op2_C(op2_C[18]));
 endmodule
 
-(* ORIG_REF_NAME = "Zero_Detect" *) 
 module cpu_Zero_Detect
    (Reg_zero,
     Reg_Test_Equal,
@@ -67681,7 +67627,6 @@ module cpu_Zero_Detect
         .zero_CI_6(zero_CI_6));
 endmodule
 
-(* ORIG_REF_NAME = "address_hit" *) 
 module cpu_address_hit
    (\Use_Serial_Unified_Completion.completion_block_reg ,
     single_Step_N_reg,
@@ -67891,7 +67836,6 @@ module cpu_address_hit
         .single_Step_N_reg(single_Step_N_reg));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module cpu_blk_mem_gen_generic_cstr
    (douta,
     doutb,
@@ -68451,7 +68395,6 @@ module cpu_blk_mem_gen_generic_cstr
         .web(web[1]));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module cpu_blk_mem_gen_prim_width
    (douta,
     doutb,
@@ -70687,7 +70630,6 @@ module cpu_blk_mem_gen_prim_width__parameterized9
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module cpu_blk_mem_gen_prim_wrapper
    (douta,
     doutb,
@@ -79415,7 +79357,6 @@ module cpu_blk_mem_gen_prim_wrapper__parameterized9
         .WEBWE({1'b0,1'b0,1'b0,1'b0,web,web,web,web}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module cpu_blk_mem_gen_top
    (douta,
     doutb,
@@ -79511,7 +79452,7 @@ endmodule
 (* C_WEA_WIDTH = "4" *) (* C_WEB_WIDTH = "4" *) (* C_WRITE_DEPTH_A = "32768" *) 
 (* C_WRITE_DEPTH_B = "32768" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "32" *) (* C_WRITE_WIDTH_B = "32" *) (* C_XDEVICEFAMILY = "artix7" *) 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module cpu_blk_mem_gen_v8_4_4
    (clka,
     rsta,
@@ -79797,7 +79738,6 @@ module cpu_blk_mem_gen_v8_4_4
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module cpu_blk_mem_gen_v8_4_4_synth
    (douta,
     doutb,
@@ -79868,7 +79808,6 @@ module cpu_blk_mem_gen_v8_4_4_synth
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "instr_mux" *) 
 module cpu_instr_mux
    (Y,
     Instr,
@@ -79887,7 +79826,6 @@ module cpu_instr_mux
         .Y(Y));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_FDR" *) 
 module cpu_microblaze_v11_0_3_MB_FDR
    (\Using_FPGA.Native_0 ,
     inHibit_EX_reg,
@@ -80016,7 +79954,6 @@ module cpu_microblaze_v11_0_3_MB_FDR
         .O(nonvalid_IFetch_n_i_2_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_FDRE" *) 
 module cpu_microblaze_v11_0_3_MB_FDRE
    (carry_In,
     sync_reset,
@@ -82506,7 +82443,6 @@ module cpu_microblaze_v11_0_3_MB_FDRE_80
         .R(\Using_FPGA.Native_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_FDRSE" *) 
 module cpu_microblaze_v11_0_3_MB_FDRSE
    (\Using_FPGA.Native_0 ,
     \Use_Async_Reset.sync_reset_reg ,
@@ -83337,7 +83273,6 @@ module cpu_microblaze_v11_0_3_MB_FDRSE_729
         .O(I3_1));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_FDSE" *) 
 module cpu_microblaze_v11_0_3_MB_FDSE
    (Reg_Test_Equal,
     \Using_FPGA.Native_0 ,
@@ -83865,7 +83800,6 @@ module cpu_microblaze_v11_0_3_MB_FDSE_572
         .S(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_LUT3" *) 
 module cpu_microblaze_v11_0_3_MB_LUT3
    (opsel1_SPR_Select_2_2,
     instr_OF_raw,
@@ -84064,7 +83998,6 @@ module cpu_microblaze_v11_0_3_MB_LUT3__parameterized4
         .O(O));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_LUT6" *) 
 module cpu_microblaze_v11_0_3_MB_LUT6
    (alu_AddSub_1,
     op2_C,
@@ -85189,7 +85122,6 @@ module cpu_microblaze_v11_0_3_MB_LUT6__parameterized0_375
         .O(EX_Result));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_MULT_AND" *) 
 module cpu_microblaze_v11_0_3_MB_MULT_AND
    (sub_Carry,
     \Using_FPGA.Native_0 ,
@@ -85237,7 +85169,6 @@ module cpu_microblaze_v11_0_3_MB_MULT_AND_822
         .O(DI));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_MUXCY" *) 
 module cpu_microblaze_v11_0_3_MB_MUXCY
    (carry_7,
     SRL16_Sel_7,
@@ -86801,7 +86732,6 @@ module cpu_microblaze_v11_0_3_MB_MUXCY_87
         .O(using_Imm_reg));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_MUXCY_XORCY" *) 
 module cpu_microblaze_v11_0_3_MB_MUXCY_XORCY
    (buffer_Addr_S_I_2,
     \Using_FPGA.Native ,
@@ -88714,7 +88644,6 @@ module cpu_microblaze_v11_0_3_MB_MUXCY_XORCY_91
   assign O = lopt_1;
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_MUXF7" *) 
 module cpu_microblaze_v11_0_3_MB_MUXF7
    (Select_Logic_reg,
     Select_Logic,
@@ -89482,7 +89411,6 @@ module cpu_microblaze_v11_0_3_MB_MUXF7_253
         .S(Select_Logic));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_MB_SRL16E" *) 
 module cpu_microblaze_v11_0_3_MB_SRL16E
    (\Using_FPGA.Native ,
     \Using_FPGA.Native_0 ,
@@ -93568,7 +93496,6 @@ module cpu_microblaze_v11_0_3_MB_SRL16E__parameterized5
         .Q(tdo_config_word1_4));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_mb_sync_bit" *) 
 module cpu_microblaze_v11_0_3_mb_sync_bit
    (out,
     reset_temp,
@@ -94577,7 +94504,6 @@ module cpu_microblaze_v11_0_3_mb_sync_bit__parameterized1_33
         .R(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "microblaze_v11_0_3_mb_sync_vec" *) 
 module cpu_microblaze_v11_0_3_mb_sync_vec
    (D,
     config_with_scan_reset,
@@ -94767,7 +94693,6 @@ module cpu_microblaze_v11_0_3_mb_sync_vec__parameterized0
         .sync_reset(sync_reset));
 endmodule
 
-(* ORIG_REF_NAME = "mux4_8" *) 
 module cpu_mux4_8
    (D,
     \trace_data_write_value_i_reg[8] ,
@@ -94814,7 +94739,6 @@ module cpu_mux4_8
         .\trace_data_write_value_i_reg[15] ({\trace_data_write_value_i_reg[8] [7],\trace_data_write_value_i_reg[8] [15],\trace_data_write_value_i_reg[8] [23],\trace_data_write_value_i_reg[8] [31]}));
 endmodule
 
-(* ORIG_REF_NAME = "mux_bus" *) 
 module cpu_mux_bus
    (Y,
     Instr,

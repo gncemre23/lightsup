@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sun Apr  4 12:25:38 2021
+# Process ID: 2710
+# Current directory: /home/egoncu/Desktop/github/lightsup
+# Command line: vivado prj/fproSampler_Lightsup/fproSampler_Lightsup.xpr
+# Log file: /home/egoncu/Desktop/github/lightsup/vivado.log
+# Journal file: /home/egoncu/Desktop/github/lightsup/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project prj/fproSampler_Lightsup/fproSampler_Lightsup.xpr
+Scanning sources...
+Finished scanning sources
+WARNING: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/home/egoncu/Desktop/github/lightsup/prj/fproSampler_Lightsup/fproSampler_Lightsup.srcs/sources_1'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+open_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:09 . Memory (MB): peak = 7021.148 ; gain = 36.074 ; free physical = 1570 ; free virtual = 5861
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+update_compile_order -fileset sources_1

@@ -1,9 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Sat Apr  3 10:09:42 2021
+-- Date        : Sat Apr  3 10:09:39 2021
 -- Host        : egoncu-Lenovo-IdeaPad-L340-15API running 64-bit Ubuntu 20.04.1 LTS
--- Command     : write_vhdl -force -mode funcsim /home/egoncu/Desktop/github/lightsup/hw/ip/cpu_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top cpu -prefix
+--               cpu_ cpu_sim_netlist.vhdl
 -- Design      : cpu
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -41,8 +42,6 @@ entity cpu_MB_BSCANE2 is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \Use_Serial_Unified_Completion.completion_status_reg[15]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_BSCANE2 : entity is "MB_BSCANE2";
 end cpu_MB_BSCANE2;
 
 architecture STRUCTURE of cpu_MB_BSCANE2 is
@@ -171,8 +170,6 @@ entity cpu_MB_BUFG is
     Ext_JTAG_DRCK : out STD_LOGIC;
     DRCK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_BUFG : entity is "MB_BUFG";
 end cpu_MB_BUFG;
 
 architecture STRUCTURE of cpu_MB_BUFG is
@@ -243,8 +240,6 @@ entity cpu_MB_FDC_1 is
     Debug_SYS_Rst : in STD_LOGIC;
     Ext_NM_BRK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_FDC_1 : entity is "MB_FDC_1";
 end cpu_MB_FDC_1;
 
 architecture STRUCTURE of cpu_MB_FDC_1 is
@@ -859,8 +854,6 @@ entity cpu_MB_FDRE_1 is
     \Serial_Dbg_Intf.shift_count_reg[4]_2\ : in STD_LOGIC;
     \Serial_Dbg_Intf.shift_count_reg[4]_3\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_FDRE_1 : entity is "MB_FDRE_1";
 end cpu_MB_FDRE_1;
 
 architecture STRUCTURE of cpu_MB_FDRE_1 is
@@ -909,8 +902,6 @@ entity cpu_bd_3914_xlconcat_0_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_xlconcat_0_0 : entity is "bd_3914_xlconcat_0_0,xlconcat_v2_1_3_xlconcat,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_xlconcat_0_0 : entity is "bd_3914_xlconcat_0_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_xlconcat_0_0 : entity is "yes";
   attribute x_core_info : string;
@@ -942,8 +933,6 @@ entity cpu_cdc_sync is
     mb_debug_sys_rst : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_cdc_sync : entity is "cdc_sync";
 end cpu_cdc_sync;
 
 architecture STRUCTURE of cpu_cdc_sync is
@@ -1408,8 +1397,6 @@ entity cpu_iomodule is
   attribute C_USE_UART_RX of cpu_iomodule : entity is 0;
   attribute C_USE_UART_TX : integer;
   attribute C_USE_UART_TX of cpu_iomodule : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_iomodule : entity is "iomodule";
 end cpu_iomodule;
 
 architecture STRUCTURE of cpu_iomodule is
@@ -4074,8 +4061,6 @@ entity cpu_lmb_bram_if_cntlr is
     LMB_ABus : in STD_LOGIC_VECTOR ( 1 downto 0 );
     LMB_BE : in STD_LOGIC_VECTOR ( 0 to 3 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_lmb_bram_if_cntlr : entity is "lmb_bram_if_cntlr";
 end cpu_lmb_bram_if_cntlr;
 
 architecture STRUCTURE of cpu_lmb_bram_if_cntlr is
@@ -4302,8 +4287,6 @@ entity cpu_lmb_v10 is
   attribute C_LMB_NUM_SLAVES of cpu_lmb_v10 : entity is 2;
   attribute C_LMB_PROTOCOL : integer;
   attribute C_LMB_PROTOCOL of cpu_lmb_v10 : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_lmb_v10 : entity is "lmb_v10";
 end cpu_lmb_v10;
 
 architecture STRUCTURE of cpu_lmb_v10 is
@@ -4771,8 +4754,6 @@ entity cpu_mdm_v3_2_18_MB_LUT1 is
     Ext_JTAG_TDI : out STD_LOGIC;
     I0 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_mdm_v3_2_18_MB_LUT1 : entity is "mdm_v3_2_18_MB_LUT1";
 end cpu_mdm_v3_2_18_MB_LUT1;
 
 architecture STRUCTURE of cpu_mdm_v3_2_18_MB_LUT1 is
@@ -4812,8 +4793,6 @@ entity cpu_mdm_v3_2_18_MB_SRL16E is
     \Use_E2.BSCANE2_I_i_4_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     config_TDO_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_mdm_v3_2_18_MB_SRL16E : entity is "mdm_v3_2_18_MB_SRL16E";
 end cpu_mdm_v3_2_18_MB_SRL16E;
 
 architecture STRUCTURE of cpu_mdm_v3_2_18_MB_SRL16E is
@@ -5027,8 +5006,6 @@ entity cpu_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_upcnt_n : entity is "upcnt_n";
 end cpu_upcnt_n;
 
 architecture STRUCTURE of cpu_upcnt_n is
@@ -5190,8 +5167,6 @@ entity cpu_MB_FD is
     EX_Result : in STD_LOGIC_VECTOR ( 0 to 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_FD : entity is "MB_FD";
 end cpu_MB_FD;
 
 architecture STRUCTURE of cpu_MB_FD is
@@ -5223,8 +5198,6 @@ entity cpu_MB_FDE is
     Address : in STD_LOGIC_VECTOR ( 0 to 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_FDE : entity is "MB_FDE";
 end cpu_MB_FDE;
 
 architecture STRUCTURE of cpu_MB_FDE is
@@ -6783,8 +6756,6 @@ entity cpu_MB_FDS is
     missed_IFetch : in STD_LOGIC;
     \Using_FPGA.Native_2\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_FDS : entity is "MB_FDS";
 end cpu_MB_FDS;
 
 architecture STRUCTURE of cpu_MB_FDS is
@@ -7948,8 +7919,6 @@ entity cpu_MB_LUT2 is
     byte_selects_0 : in STD_LOGIC;
     isbyte : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_LUT2 : entity is "MB_LUT2";
 end cpu_MB_LUT2;
 
 architecture STRUCTURE of cpu_MB_LUT2 is
@@ -7982,8 +7951,6 @@ entity cpu_MB_LUT4 is
     \Using_FPGA.Native_4\ : in STD_LOGIC;
     \Using_FPGA.Native_5\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_LUT4 : entity is "MB_LUT4";
 end cpu_MB_LUT4;
 
 architecture STRUCTURE of cpu_MB_LUT4 is
@@ -12277,8 +12244,6 @@ entity cpu_MB_LUT5 is
     \Using_FPGA.Native_0\ : in STD_LOGIC;
     \Using_FPGA.Native_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_LUT5 : entity is "MB_LUT5";
 end cpu_MB_LUT5;
 
 architecture STRUCTURE of cpu_MB_LUT5 is
@@ -12345,8 +12310,6 @@ entity cpu_MB_LUT6_2 is
     res_Forward1 : in STD_LOGIC;
     opsel1_SPR : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_LUT6_2 : entity is "MB_LUT6_2";
 end cpu_MB_LUT6_2;
 
 architecture STRUCTURE of cpu_MB_LUT6_2 is
@@ -15732,8 +15695,6 @@ entity cpu_MB_RAM32X1D is
     Write_Addr : in STD_LOGIC_VECTOR ( 0 to 4 );
     reg1_Addr : in STD_LOGIC_VECTOR ( 0 to 4 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_RAM32X1D : entity is "MB_RAM32X1D";
 end cpu_MB_RAM32X1D;
 
 architecture STRUCTURE of cpu_MB_RAM32X1D is
@@ -18612,8 +18573,6 @@ entity cpu_MB_SRLC16E is
     Dbg_Clk : in STD_LOGIC;
     Dbg_Reg_En : in STD_LOGIC_VECTOR ( 0 to 7 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MB_SRLC16E : entity is "MB_SRLC16E";
 end cpu_MB_SRLC16E;
 
 architecture STRUCTURE of cpu_MB_SRLC16E is
@@ -18949,8 +18908,6 @@ entity cpu_blk_mem_gen_prim_wrapper is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     web : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end cpu_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of cpu_blk_mem_gen_prim_wrapper is
@@ -27634,8 +27591,6 @@ entity cpu_microblaze_v11_0_3_MB_FDR is
     DReady : in STD_LOGIC;
     mul_Executing : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_FDR : entity is "microblaze_v11_0_3_MB_FDR";
 end cpu_microblaze_v11_0_3_MB_FDR;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_FDR is
@@ -27729,8 +27684,6 @@ entity cpu_microblaze_v11_0_3_MB_FDRE is
     correct_Carry_II : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_FDRE : entity is "microblaze_v11_0_3_MB_FDRE";
 end cpu_microblaze_v11_0_3_MB_FDRE;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_FDRE is
@@ -30367,8 +30320,6 @@ entity cpu_microblaze_v11_0_3_MB_FDRSE is
     \Using_FPGA.Native_6\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_FDRSE : entity is "microblaze_v11_0_3_MB_FDRSE";
 end cpu_microblaze_v11_0_3_MB_FDRSE;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_FDRSE is
@@ -31280,8 +31231,6 @@ entity cpu_microblaze_v11_0_3_MB_FDSE is
     Reg_Test_Equal_i : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_FDSE : entity is "microblaze_v11_0_3_MB_FDSE";
 end cpu_microblaze_v11_0_3_MB_FDSE;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_FDSE is
@@ -31838,8 +31787,6 @@ entity cpu_microblaze_v11_0_3_MB_LUT3 is
     instr_OF_raw : in STD_LOGIC_VECTOR ( 1 downto 0 );
     D : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_LUT3 : entity is "microblaze_v11_0_3_MB_LUT3";
 end cpu_microblaze_v11_0_3_MB_LUT3;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_LUT3 is
@@ -32076,8 +32023,6 @@ entity cpu_microblaze_v11_0_3_MB_LUT6 is
     alu_Op : in STD_LOGIC_VECTOR ( 0 to 1 );
     Op1_Logic : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_LUT6 : entity is "microblaze_v11_0_3_MB_LUT6";
 end cpu_microblaze_v11_0_3_MB_LUT6;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_LUT6 is
@@ -33220,8 +33165,6 @@ entity cpu_microblaze_v11_0_3_MB_MULT_AND is
     \Using_FPGA.Native_0\ : in STD_LOGIC;
     \Using_FPGA.Native_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_MULT_AND : entity is "microblaze_v11_0_3_MB_MULT_AND";
 end cpu_microblaze_v11_0_3_MB_MULT_AND;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_MULT_AND is
@@ -33293,8 +33236,6 @@ entity cpu_microblaze_v11_0_3_MB_MUXCY is
     lopt_7 : in STD_LOGIC;
     lopt_8 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_MUXCY : entity is "microblaze_v11_0_3_MB_MUXCY";
 end cpu_microblaze_v11_0_3_MB_MUXCY;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_MUXCY is
@@ -34937,8 +34878,6 @@ entity cpu_microblaze_v11_0_3_MB_MUXCY_XORCY is
     LO : in STD_LOGIC;
     lopt : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_MUXCY_XORCY : entity is "microblaze_v11_0_3_MB_MUXCY_XORCY";
 end cpu_microblaze_v11_0_3_MB_MUXCY_XORCY;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_MUXCY_XORCY is
@@ -36942,8 +36881,6 @@ entity cpu_microblaze_v11_0_3_MB_MUXF7 is
     shift_Res : in STD_LOGIC;
     logic_Res_i : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_MUXF7 : entity is "microblaze_v11_0_3_MB_MUXF7";
 end cpu_microblaze_v11_0_3_MB_MUXF7;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_MUXF7 is
@@ -37812,8 +37749,6 @@ entity cpu_microblaze_v11_0_3_MB_SRL16E is
     Clk : in STD_LOGIC;
     byte_i_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_MB_SRL16E : entity is "microblaze_v11_0_3_MB_SRL16E";
 end cpu_microblaze_v11_0_3_MB_SRL16E;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_MB_SRL16E is
@@ -41921,8 +41856,6 @@ entity cpu_microblaze_v11_0_3_mb_sync_bit is
     reset_temp : in STD_LOGIC;
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_mb_sync_bit : entity is "microblaze_v11_0_3_mb_sync_bit";
 end cpu_microblaze_v11_0_3_mb_sync_bit;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_mb_sync_bit is
@@ -43094,8 +43027,6 @@ entity cpu_JTAG_CONTROL is
     \Use_Serial_Unified_Completion.count_reg[5]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \Use_Serial_Unified_Completion.count_reg[5]_2\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_JTAG_CONTROL : entity is "JTAG_CONTROL";
 end cpu_JTAG_CONTROL;
 
 architecture STRUCTURE of cpu_JTAG_CONTROL is
@@ -44627,8 +44558,6 @@ entity cpu_bd_3914_dlmb_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_dlmb_0 : entity is "bd_3914_dlmb_0,lmb_v10,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_dlmb_0 : entity is "bd_3914_dlmb_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_dlmb_0 : entity is "yes";
   attribute x_core_info : string;
@@ -44735,8 +44664,6 @@ entity cpu_bd_3914_dlmb_cntlr_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_dlmb_cntlr_0 : entity is "bd_3914_dlmb_cntlr_0,lmb_bram_if_cntlr,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_dlmb_cntlr_0 : entity is "bd_3914_dlmb_cntlr_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_dlmb_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
@@ -44842,8 +44769,6 @@ entity cpu_bd_3914_ilmb_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_ilmb_0 : entity is "bd_3914_ilmb_0,lmb_v10,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_ilmb_0 : entity is "bd_3914_ilmb_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_ilmb_0 : entity is "yes";
   attribute x_core_info : string;
@@ -44951,8 +44876,6 @@ entity cpu_bd_3914_ilmb_cntlr_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_ilmb_cntlr_0 : entity is "bd_3914_ilmb_cntlr_0,lmb_bram_if_cntlr,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_ilmb_cntlr_0 : entity is "bd_3914_ilmb_cntlr_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_ilmb_cntlr_0 : entity is "yes";
   attribute x_core_info : string;
@@ -45053,8 +44976,6 @@ entity cpu_bd_3914_iomodule_0_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_iomodule_0_0 : entity is "bd_3914_iomodule_0_0,iomodule,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_iomodule_0_0 : entity is "bd_3914_iomodule_0_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_iomodule_0_0 : entity is "yes";
   attribute x_core_info : string;
@@ -45395,8 +45316,6 @@ entity cpu_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_lpf : entity is "lpf";
 end cpu_lpf;
 
 architecture STRUCTURE of cpu_lpf is
@@ -45583,8 +45502,6 @@ entity cpu_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_sequence_psr : entity is "sequence_psr";
 end cpu_sequence_psr;
 
 architecture STRUCTURE of cpu_sequence_psr is
@@ -45905,8 +45822,6 @@ entity cpu_ALU_Bit is
     lopt_2 : out STD_LOGIC;
     lopt_3 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_ALU_Bit : entity is "ALU_Bit";
 end cpu_ALU_Bit;
 
 architecture STRUCTURE of cpu_ALU_Bit is
@@ -47583,8 +47498,6 @@ entity cpu_MSR_Reg_Bit is
     \Using_FPGA.Native_0\ : in STD_LOGIC;
     Address : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MSR_Reg_Bit : entity is "MSR_Reg_Bit";
 end cpu_MSR_Reg_Bit;
 
 architecture STRUCTURE of cpu_MSR_Reg_Bit is
@@ -47686,8 +47599,6 @@ entity cpu_Operand_Select_Bit is
     \Using_FPGA.Native_2\ : in STD_LOGIC;
     sext8 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Operand_Select_Bit : entity is "Operand_Select_Bit";
 end cpu_Operand_Select_Bit;
 
 architecture STRUCTURE of cpu_Operand_Select_Bit is
@@ -49636,8 +49547,6 @@ entity cpu_PC_Bit is
     lopt : in STD_LOGIC;
     lopt_1 : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_PC_Bit : entity is "PC_Bit";
 end cpu_PC_Bit;
 
 architecture STRUCTURE of cpu_PC_Bit is
@@ -51097,8 +51006,6 @@ entity cpu_PreFetch_Buffer is
     lopt_4 : in STD_LOGIC;
     lopt_5 : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_PreFetch_Buffer : entity is "PreFetch_Buffer";
 end cpu_PreFetch_Buffer;
 
 architecture STRUCTURE of cpu_PreFetch_Buffer is
@@ -51835,8 +51742,6 @@ entity cpu_Register_File_Bit is
     reg1_Addr : in STD_LOGIC_VECTOR ( 0 to 4 );
     imm_Value : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Register_File_Bit : entity is "Register_File_Bit";
 end cpu_Register_File_Bit;
 
 architecture STRUCTURE of cpu_Register_File_Bit is
@@ -53178,8 +53083,6 @@ entity cpu_Result_Mux_Bit is
     Data_Read : in STD_LOGIC_VECTOR ( 0 to 0 );
     Clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Result_Mux_Bit : entity is "Result_Mux_Bit";
 end cpu_Result_Mux_Bit;
 
 architecture STRUCTURE of cpu_Result_Mux_Bit is
@@ -54658,8 +54561,6 @@ entity cpu_Shift_Logic_Bit is
     Shift_Oper : in STD_LOGIC;
     Select_Logic : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Shift_Logic_Bit : entity is "Shift_Logic_Bit";
 end cpu_Shift_Logic_Bit;
 
 architecture STRUCTURE of cpu_Shift_Logic_Bit is
@@ -56143,8 +56044,6 @@ entity cpu_Zero_Detect is
     lopt_1 : in STD_LOGIC;
     lopt_2 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Zero_Detect : entity is "Zero_Detect";
 end cpu_Zero_Detect;
 
 architecture STRUCTURE of cpu_Zero_Detect is
@@ -56324,8 +56223,6 @@ entity cpu_address_hit is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     Single_Step_N : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_address_hit : entity is "address_hit";
 end cpu_address_hit;
 
 architecture STRUCTURE of cpu_address_hit is
@@ -56548,8 +56445,6 @@ entity cpu_blk_mem_gen_prim_width is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     web : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end cpu_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of cpu_blk_mem_gen_prim_width is
@@ -58231,8 +58126,6 @@ entity cpu_microblaze_v11_0_3_mb_sync_vec is
     Scan_Reset : in STD_LOGIC;
     Scan_En : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_microblaze_v11_0_3_mb_sync_vec : entity is "microblaze_v11_0_3_mb_sync_vec";
 end cpu_microblaze_v11_0_3_mb_sync_vec;
 
 architecture STRUCTURE of cpu_microblaze_v11_0_3_mb_sync_vec is
@@ -58394,8 +58287,6 @@ entity cpu_mux4_8 is
     \trace_data_write_value_i_reg[8]\ : in STD_LOGIC_VECTOR ( 0 to 31 );
     sel_Write_Mux_MSB : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_mux4_8 : entity is "mux4_8";
 end cpu_mux4_8;
 
 architecture STRUCTURE of cpu_mux4_8 is
@@ -58491,8 +58382,6 @@ entity cpu_mux_bus is
     Instr : in STD_LOGIC_VECTOR ( 0 to 31 );
     LOCKSTEP_Master_Out : in STD_LOGIC_VECTOR ( 32 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_mux_bus : entity is "mux_bus";
 end cpu_mux_bus;
 
 architecture STRUCTURE of cpu_mux_bus is
@@ -58696,8 +58585,6 @@ entity cpu_MDM_Core is
     AR : in STD_LOGIC_VECTOR ( 0 to 0 );
     \Use_Serial_Unified_Completion.count_reg[5]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MDM_Core : entity is "MDM_Core";
 end cpu_MDM_Core;
 
 architecture STRUCTURE of cpu_MDM_Core is
@@ -59317,8 +59204,6 @@ entity cpu_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of cpu_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of cpu_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_proc_sys_reset : entity is "proc_sys_reset";
 end cpu_proc_sys_reset;
 
 architecture STRUCTURE of cpu_proc_sys_reset is
@@ -59483,8 +59368,6 @@ entity cpu_ALU is
     lopt_4 : in STD_LOGIC;
     lopt_5 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_ALU : entity is "ALU";
 end cpu_ALU;
 
 architecture STRUCTURE of cpu_ALU is
@@ -60147,8 +60030,6 @@ entity cpu_Byte_Doublet_Handle is
     isdoublet : in STD_LOGIC;
     \trace_data_write_value_i_reg[8]\ : in STD_LOGIC_VECTOR ( 0 to 31 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Byte_Doublet_Handle : entity is "Byte_Doublet_Handle";
 end cpu_Byte_Doublet_Handle;
 
 architecture STRUCTURE of cpu_Byte_Doublet_Handle is
@@ -60341,8 +60222,6 @@ entity cpu_Debug is
     jump : in STD_LOGIC;
     inHibit_EX : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Debug : entity is "Debug";
 end cpu_Debug;
 
 architecture STRUCTURE of cpu_Debug is
@@ -64252,8 +64131,6 @@ entity cpu_Decode is
     lopt_6 : out STD_LOGIC;
     lopt_7 : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Decode : entity is "Decode";
 end cpu_Decode;
 
 architecture STRUCTURE of cpu_Decode is
@@ -66252,8 +66129,6 @@ entity cpu_MSR_Reg is
     \Using_FPGA.Native_2\ : in STD_LOGIC;
     Address : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MSR_Reg : entity is "MSR_Reg";
 end cpu_MSR_Reg;
 
 architecture STRUCTURE of cpu_MSR_Reg is
@@ -66424,8 +66299,6 @@ entity cpu_Operand_Select is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     imm_Value : in STD_LOGIC_VECTOR ( 0 to 15 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Operand_Select : entity is "Operand_Select";
 end cpu_Operand_Select;
 
 architecture STRUCTURE of cpu_Operand_Select is
@@ -67064,8 +66937,6 @@ entity cpu_PC_Module is
     \Using_FPGA.Native_2\ : in STD_LOGIC;
     DI : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_PC_Module : entity is "PC_Module";
 end cpu_PC_Module;
 
 architecture STRUCTURE of cpu_PC_Module is
@@ -67475,8 +67346,6 @@ entity cpu_Register_File is
     reg1_Addr : in STD_LOGIC_VECTOR ( 0 to 4 );
     imm_Value : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Register_File : entity is "Register_File";
 end cpu_Register_File;
 
 architecture STRUCTURE of cpu_Register_File is
@@ -67921,8 +67790,6 @@ entity cpu_Result_Mux is
     \Using_FPGA.Native_32\ : in STD_LOGIC;
     \Using_FPGA.Native_33\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Result_Mux : entity is "Result_Mux";
 end cpu_Result_Mux;
 
 architecture STRUCTURE of cpu_Result_Mux is
@@ -68366,8 +68233,6 @@ entity cpu_Shift_Logic_Module is
     \Using_FPGA.Native_31\ : in STD_LOGIC;
     \Using_FPGA.Native_32\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Shift_Logic_Module : entity is "Shift_Logic_Module";
 end cpu_Shift_Logic_Module;
 
 architecture STRUCTURE of cpu_Shift_Logic_Module is
@@ -68740,8 +68605,6 @@ entity cpu_blk_mem_gen_generic_cstr is
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end cpu_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of cpu_blk_mem_gen_generic_cstr is
@@ -69327,8 +69190,6 @@ entity cpu_instr_mux is
     Instr : in STD_LOGIC_VECTOR ( 0 to 31 );
     LOCKSTEP_Master_Out : in STD_LOGIC_VECTOR ( 32 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_instr_mux : entity is "instr_mux";
 end cpu_instr_mux;
 
 architecture STRUCTURE of cpu_instr_mux is
@@ -70930,8 +70791,6 @@ entity cpu_MDM is
   attribute C_USE_CROSS_TRIGGER of cpu_MDM : entity is 0;
   attribute C_USE_UART : integer;
   attribute C_USE_UART of cpu_MDM : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MDM : entity is "MDM";
 end cpu_MDM;
 
 architecture STRUCTURE of cpu_MDM is
@@ -76685,8 +76544,6 @@ entity cpu_bd_3914_rst_0_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_rst_0_0 : entity is "bd_3914_rst_0_0,proc_sys_reset,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_rst_0_0 : entity is "bd_3914_rst_0_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_rst_0_0 : entity is "yes";
   attribute x_core_info : string;
@@ -76858,8 +76715,6 @@ entity cpu_Data_Flow is
     lopt_7 : in STD_LOGIC;
     lopt_8 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_Data_Flow : entity is "Data_Flow";
 end cpu_Data_Flow;
 
 architecture STRUCTURE of cpu_Data_Flow is
@@ -77513,8 +77368,6 @@ entity cpu_blk_mem_gen_top is
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end cpu_blk_mem_gen_top;
 
 architecture STRUCTURE of cpu_blk_mem_gen_top is
@@ -77558,8 +77411,6 @@ entity cpu_bd_3914_mdm_0_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_mdm_0_0 : entity is "bd_3914_mdm_0_0,MDM,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_mdm_0_0 : entity is "bd_3914_mdm_0_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_mdm_0_0 : entity is "yes";
   attribute x_core_info : string;
@@ -80095,8 +79946,6 @@ entity cpu_MicroBlaze_Area is
     Dbg_TDI : in STD_LOGIC;
     Instr : in STD_LOGIC_VECTOR ( 0 to 31 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MicroBlaze_Area : entity is "MicroBlaze_Area";
 end cpu_MicroBlaze_Area;
 
 architecture STRUCTURE of cpu_MicroBlaze_Area is
@@ -82077,8 +81926,6 @@ entity cpu_blk_mem_gen_v8_4_4_synth is
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end cpu_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of cpu_blk_mem_gen_v8_4_4_synth is
@@ -82149,8 +81996,6 @@ entity cpu_MicroBlaze_Core is
     Instr : in STD_LOGIC_VECTOR ( 0 to 31 );
     Wakeup : in STD_LOGIC_VECTOR ( 0 to 1 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MicroBlaze_Core : entity is "MicroBlaze_Core";
 end cpu_MicroBlaze_Core;
 
 architecture STRUCTURE of cpu_MicroBlaze_Core is
@@ -82461,8 +82306,6 @@ entity cpu_blk_mem_gen_v8_4_4 is
   attribute C_WRITE_WIDTH_B of cpu_blk_mem_gen_v8_4_4 : entity is 32;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of cpu_blk_mem_gen_v8_4_4 : entity is "artix7";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_blk_mem_gen_v8_4_4 : entity is "yes";
 end cpu_blk_mem_gen_v8_4_4;
@@ -82637,8 +82480,6 @@ entity cpu_bd_3914_lmb_bram_I_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_lmb_bram_I_0 : entity is "bd_3914_lmb_bram_I_0,blk_mem_gen_v8_4_4,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_lmb_bram_I_0 : entity is "bd_3914_lmb_bram_I_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_lmb_bram_I_0 : entity is "yes";
   attribute x_core_info : string;
@@ -83690,8 +83531,6 @@ entity cpu_MicroBlaze is
   attribute C_USE_STACK_PROTECTION of cpu_MicroBlaze : entity is 0;
   attribute G_TEMPLATE_LIST : integer;
   attribute G_TEMPLATE_LIST of cpu_MicroBlaze : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_MicroBlaze : entity is "MicroBlaze";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_MicroBlaze : entity is "yes";
 end cpu_MicroBlaze;
@@ -95941,8 +95780,6 @@ entity cpu_bd_3914_microblaze_I_0 is
   );
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of cpu_bd_3914_microblaze_I_0 : entity is "bd_3914_microblaze_I_0,MicroBlaze,{}";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914_microblaze_I_0 : entity is "bd_3914_microblaze_I_0";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of cpu_bd_3914_microblaze_I_0 : entity is "yes";
   attribute x_core_info : string;
@@ -97041,8 +96878,6 @@ entity cpu_bd_3914 is
     IO_write_strobe : out STD_LOGIC;
     Reset : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of cpu_bd_3914 : entity is "bd_3914";
   attribute hw_handoff : string;
   attribute hw_handoff of cpu_bd_3914 : entity is "cpu.hwdef";
 end cpu_bd_3914;
