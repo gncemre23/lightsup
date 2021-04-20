@@ -251,13 +251,10 @@ int main()
                 toggle(&lights[8]);
             }
 
-            else if (switch_movement(switch_prev, switch_current) == 8)
+            else if (switch_movement(switch_prev, switch_current) == 9)
             {
                 toggle(&lights[5]);
                 toggle(&lights[7]);
-                toggle(&lights[2]);
-                toggle(&lights[4]);
-                toggle(&lights[5]);
                 toggle(&lights[8]);
             }
 
